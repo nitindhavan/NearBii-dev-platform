@@ -1,0 +1,172 @@
+{
+  "project_info": {
+    "project_number": "46657852155",
+    "project_id": "neabiiapp",
+    "storage_bucket": "neabiiapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:46657852155:android:ff28ebdedfd9b609a3d65e",
+        "android_client_info": {
+          "package_name": "com.example.nearbii"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "46657852155-2k11oae1dq1qhu3ja0fjf0r6rrtmsa19.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nearbii",
+            "certificate_hash": "5d79f90f77d7474a5b7db541a75d964b93b8ec73"
+          }
+        },
+        {
+          "client_id": "46657852155-4a9i8uuaofbbgid5jp6kcs1c9dap3mm8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nearbii",
+            "certificate_hash": "fdf463be7f12aa032e1e125639878ba192eb81e3"
+          }
+        },
+        {
+          "client_id": "46657852155-4ajrekfgf93255jn2e169do1oh8rrvlp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nearbii",
+            "certificate_hash": "ecd1a9ee6f9fa71c8652c78c3ba1c0bf628fc8f1"
+          }
+        },
+        {
+          "client_id": "46657852155-57a0m1b2978pu1m6b68020k79s4ifa8h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nearbii",
+            "certificate_hash": "66c0d8e3f300ccf96f257ec58c251765096c3271"
+          }
+        },
+        {
+          "client_id": "46657852155-9p13cp0pif9tm7kglop9e8hnaua3vd7r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nearbii",
+            "certificate_hash": "38ab4a3ddc357f198cd5512b520f3bc5cb6d463f"
+          }
+        },
+        {
+          "client_id": "46657852155-a43urftlos0ju6vii56ad83rglp9375g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nearbii",
+            "certificate_hash": "9f2a3b897de25a183f1751bf36a796e2d759d570"
+          }
+        },
+        {
+          "client_id": "46657852155-oddko3m8l7ftkliso8kd9ev2gm5imr1p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nearbii",
+            "certificate_hash": "b5ecf9b0f2e18ef81132e3d49ec8290e90fcb559"
+          }
+        },
+        {
+          "client_id": "46657852155-psvpgmnd8e7v7ltgmgrjrpk94gg7adiq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nearbii",
+            "certificate_hash": "81ae374c80c84eb66410d22eddaf935287c83fd0"
+          }
+        },
+        {
+          "client_id": "46657852155-q3pk347b1e5mu6r4q174v443h5r5loh1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nearbii",
+            "certificate_hash": "666ea2e00c616ca196541b4381d4316a7a5aa896"
+          }
+        },
+        {
+          "client_id": "46657852155-s8gbroi1juqqgbd5j2h134fg4me97dfq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nearbii",
+            "certificate_hash": "6ff5677b4a2b4864ec9d33b5378519bcd7955a7d"
+          }
+        },
+        {
+          "client_id": "46657852155-t7l949bjfcnehot37ktic5hfk679oglm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nearbii",
+            "certificate_hash": "173d7e1eae8f0e778810bca2b47bfc11c80e571f"
+          }
+        },
+        {
+          "client_id": "46657852155-uk1me6bg5b9jm7h4pmsell7c1t6r8ndr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nearbii",
+            "certificate_hash": "dee2e66bca471863ff9ee0f30e8d327846d0e3da"
+          }
+        },
+        {
+          "client_id": "46657852155-92hnufl53ro99cu4fd1scb9pk185aquv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANwfdtXIAPM2DI_gihLnveSAOtaIgnXss"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "46657852155-92hnufl53ro99cu4fd1scb9pk185aquv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:46657852155:android:efbd62695cda41dea3d65e",
+        "android_client_info": {
+          "package_name": "com.shellcode.nearbii"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "46657852155-tfqgvu7auo0d4clha7g31m2gd4qv4isc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.shellcode.nearbii",
+            "certificate_hash": "fdf463be7f12aa032e1e125639878ba192eb81e3"
+          }
+        },
+        {
+          "client_id": "46657852155-92hnufl53ro99cu4fd1scb9pk185aquv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANwfdtXIAPM2DI_gihLnveSAOtaIgnXss"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "46657852155-92hnufl53ro99cu4fd1scb9pk185aquv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

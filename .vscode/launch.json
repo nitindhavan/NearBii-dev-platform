@@ -1,0 +1,25 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "NearBii",
+      "request": "launch",
+      "type": "dart",
+      "args": ["-v"]
+    },
+    {
+      "name": "NearBii (profile mode)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "profile",
+      "args": ["-v"]
+    },
+    {
+      "name": "NearBii (release mode)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "release",
+      "args": ["-v"]
+    }
+  ]
+}
