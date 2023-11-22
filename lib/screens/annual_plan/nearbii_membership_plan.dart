@@ -55,7 +55,7 @@ class _NearBiiMembershipPlanScreenState
     });
   }
 
-  saveToDB(String path, String paymentID, String orderId, String sig) async {
+  saveToDB(String? path, String paymentID, String orderId, String sig) async {
     FirebaseFirestore db = FirebaseFirestore.instance;
 
     if (!widget.renew) {
@@ -66,7 +66,7 @@ class _NearBiiMembershipPlanScreenState
             'businessImage/' +
                 FirebaseAuth.instance.currentUser!.uid.substring(0, 20) +
                 ".jpg");
-        TaskSnapshot snapshot = await reference.putFile(File(path));
+        TaskSnapshot snapshot = await reference.putFile(File(path!));
 
         var imageUrl = await snapshot.ref.getDownloadURL();
 
@@ -207,9 +207,8 @@ class _NearBiiMembershipPlanScreenState
   }
 
   void buyMembership() async {
-    var key = kDebugMode || kProfileMode
-        ? 'rzp_test_q0FLy0FYnKC94V'
-        : 'rzp_live_EaquIenmibGbWl';
+    var key ='rzp_live_EaquIenmibGbWl';
+        // : 'rzp_live_EaquIenmibGbWl';
     var options = {
       //TODO:test key when deployment then change key
       // 'key': 'rzp_test_q0FLy0FYnKC94V',

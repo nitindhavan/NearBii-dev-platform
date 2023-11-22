@@ -74,7 +74,7 @@ class _CategoryItemState extends State<CategoryItem> {
 
               Padding(
                   padding: const EdgeInsets.only(top: 18, left: 8, right: 8),
-                  child: SearchBar(search: search, val: "")),
+                  child: MySearchBar(search: search, val: "")),
               SizedBox(
                 height: height - 196,
                 child: Padding(

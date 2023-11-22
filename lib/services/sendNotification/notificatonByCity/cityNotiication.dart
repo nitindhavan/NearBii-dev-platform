@@ -202,6 +202,25 @@ sendNotificationForVendor(String name) {
   );
 }
 
+sendPlanNotification(){
+  flutterLocalNotificationsPlugin.show(
+    0,
+    "Plan purchased",
+    "Thank you for choosing NEARBII ❤",
+    NotificationDetails(
+      android: AndroidNotificationDetails(
+        channel.id,
+        channel.name,
+        channelDescription: channel.description,
+        color: Colors.blue,
+        playSound: true,
+        styleInformation: const BigTextStyleInformation(''),
+      ),
+    ),
+  );
+}
+
+
 showNotification(String name) {
   flutterLocalNotificationsPlugin.show(
     0,

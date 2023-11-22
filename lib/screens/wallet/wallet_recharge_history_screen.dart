@@ -65,23 +65,13 @@ class _WalletRechargeHistoryScreenState
       BuildContext context, String uid, DateTime startDate, DateTime endDate) {
     try {
       final _firestore = FirebaseFirestore.instance;
-
       return StreamBuilder<DocumentSnapshot>(
         stream: _firestore
             .collection('User')
             .doc(uid)
-            .collection("wallet")
+            .collection("payments")
             .doc(getDate(startDate.month, startDate.year))
-            .snapshots()
-            .handleError((error) {
-          return Container(
-            child: const SizedBox(
-              width: 30,
-              height: 30,
-              child: CircularProgressIndicator(),
-            ),
-          );
-        }),
+            .snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
             return const Center(
@@ -93,72 +83,86 @@ class _WalletRechargeHistoryScreenState
           }
           log(snapshot.data.toString());
 
-          List matter = snapshot.data!.get("payments");
-          matter.sort((a, b) => b["time"].compareTo(a["time"]));
-          print(matter.length);
+          if(snapshot.data!.exists) {
+            List matter = snapshot.data!.get("payments");
+            matter.sort((a, b) => b["time"].compareTo(a["time"]));
+            print(matter.length);
 
-          return Padding(
-            padding: const EdgeInsets.only(top: 30, bottom: 20),
-            child: SizedBox(
-              child: ListView.builder(
-                  itemCount: matter.length,
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    return Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        SizedBox(height: 12,),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                matter[index]["title"]
-                                    .toString()
-                                    .text
-                                    .lg
-                                    .bold
-                                    .make(),
-                                DateTime.fromMillisecondsSinceEpoch(
-                                        matter[index]["time"])
-                                    .toString()
-                                    .text
-                                    .make(),
-                              ],
-                            ),
-                            Column(
-                              children: [
-                                (matter[index]["status"]
-                                        ? "Credited"
-                                        : "Debited")
-                                    .text
-                                    .color(matter[index]["status"]
-                                        ? Colors.green
-                                        : Colors.red)
-                                    .bold
-                                    .lg
-                                    .make()
-                                    .pOnly(bottom: 5),
-                                (matter[index]["amount"]!=1 ? "Rs.${matter[index]["amount"]}" : "Plan offer")
-                                    .toString()
-                                    .text
-                                    .bold
-                                    .lg
-                                    .make(),
-                              ],
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 12,),
-                        Container(height: 1,color: kSignInContainerColor,width: double.infinity,),
-                      ],
-                    );
-                  },
+            return Padding(
+                padding: const EdgeInsets.only(top: 30, bottom: 20),
+                child: SizedBox(
+                  child: ListView.builder(
+                    itemCount: matter.length,
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      return Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          SizedBox(height: 12,),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  matter[index]["title"]
+                                      .toString()
+                                      .text
+                                      .lg
+                                      .bold
+                                      .make(),
+                                  DateTime
+                                      .fromMillisecondsSinceEpoch(
+                                      matter[index]["time"])
+                                      .toString()
+                                      .text
+                                      .make(),
+                                ],
+                              ),
+                              Column(
+                                children: [
+                                  (matter[index]["status"].toString())
+                                      .text
+                                      .color(
+                                      matter[index]["status"] == "success"
+                                          ? Colors.green
+                                          : Colors.red)
+                                      .bold
+                                      .lg
+                                      .make()
+                                      .pOnly(bottom: 5),
+                                  (matter[index]["amount"] != 1
+                                      ? "Rs.${matter[index]["amount"]}"
+                                      : "1 Plan offer")
+                                      .toString()
+                                      .text
+                                      .bold
+                                      .lg
+                                      .make(),
+                                ],
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 12,),
+                          Container(height: 1,
+                            color: kSignInContainerColor,
+                            width: double.infinity,),
+                        ],
+                      );
+                    },
+                  ),
+                ));
+          }
+
+          return Container(
+            child: const SizedBox(
+              child: Center(
+                child: Text('Nothing to Show'),
+              ),
             ),
-            ));
+          );
         },
       );
     } catch (Ex) {

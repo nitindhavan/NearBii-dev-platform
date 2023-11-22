@@ -22,9 +22,9 @@ const kTextFieldDecoration = InputDecoration(
   ),
 );
 
-class SearchBar extends StatefulWidget {
+class MySearchBar extends StatefulWidget {
   String val;
-  SearchBar(
+  MySearchBar(
       {Key? key,
       required this.search,
       this.onTypeSearch = false,
@@ -35,10 +35,10 @@ class SearchBar extends StatefulWidget {
   final bool onTypeSearch;
 
   @override
-  State<SearchBar> createState() => _SearchBarState();
+  State<MySearchBar> createState() => _MySearchBarState();
 }
 
-class _SearchBarState extends State<SearchBar> {
+class _MySearchBarState extends State<MySearchBar> {
   final TextEditingController searchController = TextEditingController();
   String searchQuery = '';
   late stt.SpeechToText speech;

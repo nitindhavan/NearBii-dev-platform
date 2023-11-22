@@ -104,9 +104,8 @@ class _RenewAnnualPlanScreenState extends State<RenewAnnualPlanScreen> {
   }
 
   void buyMembership() async {
-    var key = kDebugMode || kProfileMode
-        ? 'rzp_test_q0FLy0FYnKC94V'
-        : 'rzp_live_EaquIenmibGbWl';
+    var key ='rzp_live_EaquIenmibGbWl';
+        // : 'rzp_live_EaquIenmibGbWl';
     var options = {
       //TODO:test key when deployment then change key
       // 'key': 'rzp_test_q0FLy0FYnKC94V',

@@ -131,7 +131,7 @@ class _eventPlanState extends State<eventPlan> {
 
   void buyPlane() async {
     //TODO changes are must here while releasing
-    var key='rzp_test_q0FLy0FYnKC94V';
+    var key='rzp_live_EaquIenmibGbWl';
     // var key = kDebugMode || kProfileMode
     //     ? 'rzp_test_q0FLy0FYnKC94V'
     //     : 'rzp_live_EaquIenmibGbWl';

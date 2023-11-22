@@ -43,7 +43,7 @@ class _PlanScreenState extends State<PlanScreen> with SingleTickerProviderStateM
   late final Razorpay _razorpay = Razorpay();
 
   void _handlePaymentSuccess(PaymentSuccessResponse response) async {
-    setPlan(selectedPlan!);
+    setPlan(selectedPlan!,response.paymentId!);
   }
 
   void _handlePaymentError(PaymentFailureResponse response) {
@@ -62,7 +62,7 @@ class _PlanScreenState extends State<PlanScreen> with SingleTickerProviderStateM
   void makePayment(PlanModel model) async {
 
     //TODO:test key when deployment then change key
-    var key='rzp_test_q0FLy0FYnKC94V';
+    var key='rzp_live_EaquIenmibGbWl';
     // var key = !kDebugMode || !kProfileMode
     //     ? 'rzp_test_q0FLy0FYnKC94V'
     //     : 'rzp_live_EaquIenmibGbWl';
@@ -186,14 +186,14 @@ class _PlanScreenState extends State<PlanScreen> with SingleTickerProviderStateM
                 .doc(FirebaseAuth.instance.currentUser?.uid.substring(0, 20))
                 .update(wallet)
                 .then((value) {
-              Fluttertoast.showToast(msg: "Point added");
+              Fluttertoast.showToast(msg: "Point debited");
             }).catchError((onError) {
               Fluttertoast.showToast(
                   msg: "Something went Wrong use Contact us");
             });
           });
 
-          Fluttertoast.showToast(msg: "Debited 50 point from Wallet");
+          Fluttertoast.showToast(msg: "MySearchBar 50 point from Wallet");
           sendNotiicationByPin(
               widget.offerData?["title"],
               FirebaseAuth.instance.currentUser!.uid.substring(0, 20),
@@ -205,10 +205,21 @@ class _PlanScreenState extends State<PlanScreen> with SingleTickerProviderStateM
             msg: "Posting an Ad", toastLength: Toast.LENGTH_LONG);
 
         var uid=FirebaseAuth.instance.currentUser?.uid;
-        print('user id is $uid');
-          //update wallet
-          updateWallet(uid, "Ads Plan", false, 1, DateTime.now().millisecondsSinceEpoch, 0);
-          Fluttertoast.showToast(msg: "Debited 1 Ad offer from wallet");
+        Map<String, dynamic> wallet = {};
+
+        wallet["wallet"] = balance - 50;
+
+        await FirebaseFirestore.instance
+            .collection('User')
+            .doc(FirebaseAuth.instance.currentUser?.uid.substring(0, 20))
+            .update(wallet)
+            .then((value) async {
+          updateWallet(FirebaseAuth.instance.currentUser?.uid.substring(0, 20),
+              "Ad Posted", false, 50,
+              DateTime
+                  .now()
+                  .millisecondsSinceEpoch, 0);
+        });
 
           Map<String, dynamic> data = {};
 
@@ -250,10 +261,13 @@ class _PlanScreenState extends State<PlanScreen> with SingleTickerProviderStateM
     makePayment(model);
   }
 
-  void setPlan(PlanModel model){
+  void setPlan(PlanModel model,String paymentID){
+    updateTransatcion(FirebaseAuth.instance.currentUser?.uid.substring(0,20), model.planName, paymentID, "success",
+        model.price, DateTime.now().millisecondsSinceEpoch);
     FirebaseFirestore.instance.collection('plans').doc(FirebaseAuth.instance.currentUser?.uid.substring(0,20)).set(model.toMap()).then((value) async {
       Fluttertoast.showToast(msg: "Plan purchased Successfully");
       Navigator.pop(context);
+      sendPlanNotification();
     });
   }
 

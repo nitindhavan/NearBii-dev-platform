@@ -96,7 +96,7 @@ class NearBii extends StatelessWidget {
 }
 
 void _loadInterstitialAd() async {
-  final interstitialAdUnitId = 'ca-app-pub-3940256099942544/8691691433';
+  final interstitialAdUnitId = 'ca-app-pub-5233193736247595/6212123934';
 
   InterstitialAd.load(
     adUnitId: interstitialAdUnitId,

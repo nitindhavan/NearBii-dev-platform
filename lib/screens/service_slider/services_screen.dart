@@ -65,7 +65,7 @@ class _ServiceScreenState extends State<ServiceScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SearchBar(
+                MySearchBar(
                   onTypeSearch: true,
                   search: (val) async {
                     services = [];

@@ -7,14 +7,13 @@ import 'package:nearbii/Model/ServiceModel.dart';
 import 'package:nearbii/Model/catModel.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:velocity_x/velocity_x.dart';
-
 import '../Model/BannerModel.dart';
 import '../Model/notifStorage.dart';
 
 class Backend {
   final userCollection = FirebaseFirestore.instance.collection('User');
 
-  final coupanCollection = FirebaseFirestore.instance.collection('coupans');
+  final coupanCollection = FirebaseFirestore.instance.collection('coupwans');
 
   SharedPreferences? _session;
 
@@ -64,33 +63,10 @@ class Backend {
           .doc(FirebaseAuth.instance.currentUser!.uid.substring(0, 20));
       var b = await currentUserCollection.get();
       Notifcheck.userDAta = b.data()!;
+      print("Point 1"+ Notifcheck.userDAta.toString());
       if (Notifcheck.userDAta["phone"] == null && showNumber) {
         showNumber = false;
         Fluttertoast.showToast(msg: "Please Update Your Phone Number");
-      }
-    }
-
-    memberData = Notifcheck.userDAta!["member"];
-
-    if (Notifcheck.userDAta!['joinDate'] != null) {
-      session.setString("type", Notifcheck.userDAta!['type']);
-
-      session.setBool("isMember", memberData["isMember"]);
-
-      DateTime memDate =
-          DateTime.fromMillisecondsSinceEpoch(memberData["endDate"]);
-
-      session.setString("joinDate", memberData["endDate"].toString());
-      var now = DateTime.now();
-
-      if (memDate.difference(now).inMilliseconds > 0 &&
-          memberData["isMember"]) {
-        // Fluttertoast.showToast(msg: "Yes you are member");
-
-        session.setBool("checkIsMember", true);
-      } else {
-        session.setBool("checkIsMember", false);
-        //Fluttertoast.showToast(msg: "Memberhip Expied");
       }
     }
     return Notifcheck.userDAta;
@@ -170,7 +146,9 @@ class Backend {
 
   Future<bool> isUser() async {
     var data = await fetchUserData(refresh: true);
+    print("nearcheck $data");
     log(data.toString(), name: "checkuser");
+    print(data);
     return data["type"] == "User";
   }
 

@@ -220,7 +220,7 @@ class _SearchVendorState extends State<SearchVendor> {
             child: Container(
           child: Column(
             children: [
-              SearchBar(
+              MySearchBar(
                 search: search,
                 val: "",
               ).px16().pOnly(top: y / 64),

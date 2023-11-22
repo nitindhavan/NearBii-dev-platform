@@ -40,32 +40,19 @@ class _adsPlanState extends State<adsPlan> {
   int balance = 0;
 
   loadBalance() async {
-    await FirebaseFirestore.instance
+    var cvalue=await FirebaseFirestore.instance
         .collection('User')
         .doc(uid)
-        .get()
-        .then((value) {
-      setState(() {
-        balance = value.get("wallet");
-      });
-    });
-    await FirebaseFirestore.instance
+        .get();
+    var value = await FirebaseFirestore.instance
         .collection('vendor')
         .doc(uid)
-        .get()
-        .then((value) {
-      try {
-        setState(() {
-          lefthours =
-              DateTime.fromMillisecondsSinceEpoch(value.get("adsBuyTimestamp"))
-                  .difference(DateTime.now())
-                  .inHours;
-        });
-      } catch (e) {
-        setState(() {
-          lefthours = -1;
-        });
-      }
+        .get();
+
+    setState(() {
+      balance = cvalue.get("wallet");
+      lefthours = DateTime.fromMicrosecondsSinceEpoch(value.get("adsBuyTimestamp")- DateTime.now().millisecondsSinceEpoch).hour;
+      print("differnece $lefthours");
     });
   }
 
@@ -99,7 +86,7 @@ class _adsPlanState extends State<adsPlan> {
   void buyPlane(context) async {
     // await loadBalance();
     await loadPlan();
-    print(lefthours);
+    print("Hours $lefthours");
 
     if (lefthours <= 0) {
       if (plan == null || plan!.adPost! < 1) {

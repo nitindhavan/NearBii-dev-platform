@@ -69,7 +69,7 @@ Future<void> updateWallet(
         .doc(uid)
         .collection("wallet")
         .doc("lastSummary")
-        .set({"lastAmount": amount, "bill": 0, "currbalce": currbalcne});
+        .set({"lastAmount": amount, "bill": amount, "currbalce": currbalcne});
   } else {
     await FirebaseFirestore.instance
         .collection("User")

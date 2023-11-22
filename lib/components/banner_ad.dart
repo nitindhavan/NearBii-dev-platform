@@ -25,7 +25,7 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
   void initState() {
     super.initState();
     _bannerAd = BannerAd(
-      adUnitId: "ca-app-pub-3940256099942544/6300978111", // Replace with your ad unit ID  //TODO
+      adUnitId: "ca-app-pub-5233193736247595/9437053074", // Replace with your ad unit ID  //TODO
     size: widget.adSize,
       request: AdRequest(),
       listener: BannerAdListener(),

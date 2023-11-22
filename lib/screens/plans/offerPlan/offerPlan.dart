@@ -68,7 +68,7 @@ class _offerPlanState extends State<offerPlan> {
       plan!.offerPost = plan!.offerPost! - 1;
       store.set(plan!.toMap()).then((value) async {
         updateWallet(FirebaseAuth.instance.currentUser?.uid.substring(0, 20),
-            "Offer Posted With plan", false, 1,
+            "Offer Posted With plan", true, 1,
             DateTime
                 .now()
                 .millisecondsSinceEpoch, 0);
@@ -152,7 +152,7 @@ class _offerPlanState extends State<offerPlan> {
           .doc(uid)
           .update(wallet)
           .then((value) async {
-        updateWallet(uid, "Offer Posted", false, 50,
+        updateWallet(uid, "Offer Posted", true, 50,
             DateTime.now().millisecondsSinceEpoch, 0);
         var fileName = File(widget.path);
 

@@ -74,7 +74,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
             //search box
             Padding(
                 padding: const EdgeInsets.only(top: 18, left: 34, right: 34),
-                child: SearchBar(
+                child: MySearchBar(
                     onTypeSearch: true,
                     search: ((val) {
                       search(val);

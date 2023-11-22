@@ -164,7 +164,7 @@ class _AllNearbyEventsScreenState extends State<AllNearbyEventsScreen> {
                       // ),
                       child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 0),
-                          child: SearchBar(
+                          child: MySearchBar(
                             search: (quer) {
                               print(quer);
                               messageWidgets = [];

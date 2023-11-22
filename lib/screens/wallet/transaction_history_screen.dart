@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:nearbii/constants.dart';
 import 'package:nearbii/screens/wallet/referal.dart';
+import 'package:nearbii/screens/wallet/transaction_history/statement_screen.dart';
 import 'package:nearbii/screens/wallet/wallet_recharge_history_screen.dart';
 import 'package:month_year_picker/month_year_picker.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -23,7 +24,7 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-        length: 2,
+        length: widget.trans ? 2 : 1,
         child: Scaffold(
           appBar: AppBar(
             title: Text("Transactions",style: TextStyle(color: Colors.black),),
@@ -36,9 +37,10 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
                 Tab(
                   text: widget.trans ? "Transaction History" : "Wallet History",
                 ),
-                if(widget.trans)Tab(
+                widget.trans ? Tab(
                   text: "Referral History",
-                ),
+                ):
+                Tab(text: '',)
               ],
             ),
           ),
@@ -168,16 +170,22 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
                     ),
                     if(isSelectorVisible) SizedBox(height: 25,),
                     if(date.isNotEmpty)
-                      Expanded(
+                      widget.trans ? Expanded(
                         child: WalletRechargeHistoryScreen(
                             startDate: DateTime.parse(date),
                             endDate: DateTime.now(),
                             fromDate: widget.trans),
-                      ),
+                      ):
+                    Expanded(
+                      child: WalletHistory(
+                          startDate: DateTime.parse(date),
+                          endDate: DateTime.now(),
+                          fromDate: widget.trans),
+                    ),
                   ],
                 ),
               ),
-              Referal()
+              if(widget.trans)const Referal()
             ],
           ),
         ),
